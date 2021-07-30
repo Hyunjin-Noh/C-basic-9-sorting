@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define LEN 30
+
+void descending(char* str); 
+int main()
+{
+    char str[LEN]={0}, upperstr[LEN]={0}, lowerstr[LEN]={0};
+    int mylen, i, j=0, k=0;
+    
+    scanf("%s", str);
+    mylen=strlen(str);
+    
+    for(i=0;i<mylen;i++){
+        //if(str[i]>='A'&&str[i]<='Z'){
+        if(isupper(str[i])!=0){
+            upperstr[j]=str[i];//upperstr은 str이지만 upperstr[i]는 char.
+            j++;
+        }
+        //else if(str[i]>='a'&&str[i]<='z'){
+        else if(islower(str[i])!=0){
+            lowerstr[k]=str[i];
+            k++;
+        }
+    }
+    printf("대문자만 정렬 : ");
+    descending(upperstr);
+    printf("%s\n", upperstr);
+    printf("소문자만 정렬 : ");
+    descending(lowerstr);
+    printf("%s", lowerstr);
+    return 0;
+}
+
+void descending(char* str){//반환하는 거 없고 정렬만 수행하는 함수. 버블정렬 오름차순 이용.
+    int len, i, j, tmp;
+    len=strlen(str);
+    for(i=0;i<len;i++){
+        for(j=0;j<len-1-i;j++){
+            if(str[j]>str[j+1]){
+                tmp=str[j];
+                str[j]=str[j+1];
+                str[j+1]=tmp;
+            }
+        }
+    }
+}
