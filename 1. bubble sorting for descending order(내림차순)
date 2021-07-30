@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+void descending(int n[5]) {//반환하는 거 없고 정렬만 수행하는 함수
+    int i, j, tmp;
+    for(i=4;i>0;i--){
+        for(j=0;j<i;j++){
+            if(n[j]<n[j+1]){
+                tmp=n[j];
+                n[j]=n[j+1];
+                n[j+1]=tmp;
+            }
+        }
+    }
+}
+void main(){
+    int num[5];
+    int i;
+    for(i=0;i<5;i++){
+        scanf("%d", &num[i]);
+    }
+    descending(num);
+    for(i=0;i<5;i++){
+        printf("%d ", num[i]);
+    }
+}
